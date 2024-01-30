@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Visualization Final</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    {% endblock %}
+  </head>
+  <body class="bg-zinc-600">
+    <div class="min-h-full">
+      {% include 'header.html' %}
+      <main>
+        <div class="mx-auto max-w-7xl py-12 px-2 sm:px-6 lg:px-8 flex justify-center">
+          <div>
+            <div class="flex items-center mb-8 space-x-4">
+              <h1 class="text-xl md:text-2xl lg:text-3xl text-white">{% block title %}Title{% endblock %}</h1>
+              {% block dropdown %}{% endblock %}
+            </div>
+            {% block content %}{% endblock %}
+          </div>
+        </div>
+      </main>
+    </div>
+  <script src="{{ url_for('static', filename='js/utils.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  {% block script %}{% endblock %}
+  </body>
+</html>
